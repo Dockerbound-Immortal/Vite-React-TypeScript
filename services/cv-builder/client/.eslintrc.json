@@ -16,7 +16,6 @@
     },
     "plugins": ["prettier", "react", "@typescript-eslint"],
     "rules": {
-      "linebreak-style": "off",
       "indent": ["error", "tab"],
       "quotes": ["error", "single"],
       "prefer-const": ["error", { "destructuring": "all" }],
@@ -46,6 +45,7 @@
       "no-unused-vars": "warn",
       "complexity": ["error", { "max": 3 }],
       "prefer-arrow-callback": "error",
-      "no-console": "warn"
+      "no-console": "warn",
+      "react/react-in-jsx-scope": 0
     }
   }
