@@ -11,7 +11,7 @@ services:
   cv-builder-client:
     build:
       context: ./services/cv-builder/client
-      dockerfile: Dockerfile.dev
+      dockerfile: ${DOCKERFILE}
     container_name: cv-builder-client
     volumes:
       - ./services/cv-builder/client/src:/opt/app/client/src
@@ -19,10 +19,11 @@ services:
     tty: true
     stdin_open: true
     environment:
-      CLIENT_PORT: 3000
+      CLIENT_PORT: ${INTERNAL_APP_PORT}
       CHOKIDAR_USEPOLLING: true
+      LOCAL_HOST: '0.0.0.0' # Docker local host
     ports:
-      - 3000:3000
+      - ${CV_BUILDER_EXTERNAL_PORT}:${INTERNAL_APP_PORT}
     networks:
       - microservice-network
       - frontend-network
