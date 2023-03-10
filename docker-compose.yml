@@ -1,0 +1,28 @@
+version: '3.8'
+
+networks:
+  microservice-network:
+    driver: bridge
+  frontend-network:
+    driver: bridge
+
+services:
+
+  cv-builder-client:
+    build:
+      context: ./services/cv-builder/client
+      dockerfile: Dockerfile.dev
+    container_name: cv-builder-client
+    volumes:
+      - ./services/cv-builder/client/src:/opt/app/client/src
+      - /opt/app/client/node_modules
+    tty: true
+    stdin_open: true
+    environment:
+      CLIENT_PORT: 3000
+      CHOKIDAR_USEPOLLING: true
+    ports:
+      - 3000:3000
+    networks:
+      - microservice-network
+      - frontend-network
