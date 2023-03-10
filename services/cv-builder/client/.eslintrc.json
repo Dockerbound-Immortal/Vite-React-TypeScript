@@ -46,6 +46,8 @@
       "complexity": ["error", { "max": 3 }],
       "prefer-arrow-callback": "error",
       "no-console": "warn",
-      "react/react-in-jsx-scope": 0
+      "react/react-in-jsx-scope": 0,
+      "no-multiple-empty-lines": ["error", { "max": 2, "maxBOF": 1}],
+      "eol-last": ["error", "always"]
     }
   }
